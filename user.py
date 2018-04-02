@@ -33,7 +33,7 @@ class User():
     #
     #     return password
 
-    def random_password(string_length=10):
+    def create_password(string_length=10):
         """
         Returns a random string of length string_length.
         """
