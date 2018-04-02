@@ -60,14 +60,14 @@ def display_credentials():
     return Credential.display_credentials()
 
 def main():
-    print("Hello, welcome to Password Locker.")
-    print("-" *50)
+    print("Hi, welcome to Password Locker.lets make your dreams come true")
+    print("--" *30)
 
     while True:
-        print("Type 'new' to create and account or 'login' to log in to an existing account.")
+        print("Type 'create' to create a new account or 'signin' to log in to an existing account.")
         code = input().lower()
 
-        if code == "new":
+        if code == "create":
             print("User name....")
             user_name = input()
             print('\n')
@@ -84,17 +84,17 @@ def main():
                     print('\n')
                     break
                 else:
-                    print("Not recognized. Please use one of the codes.")
+                    print("Does not exist. try again by simply using one of the codes.")
                     break
 
             save_user(create_user(user_name, password))
-            print(f"Account created successfully. User name: {user_name}, password: {password}. You are currently logged in.")
+            print(f"Account successfully created. User name: {user_name}, password: {password}. You are currently signed in.")
             print('\n')
             break
 
-        elif code == "login":
-            print("Log In")
-            print("-"*30)
+        elif code == "signin":
+            print("sign In")
+            print("--"*30)
 
             print("User name....")
             user_name = input()
