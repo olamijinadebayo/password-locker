@@ -55,6 +55,26 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(found_credential.password, test_credential.password)
 
+    def test_credential_exists(self):
+        '''
+        test to see if we can return a boolean if a credential is not found
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credential("Facebook", "gitu", "1234asdf")
+        test_credential.save_credential()
+
+        credential_exists = Credential.credential_exist("gitu")
+
+        self.assertTrue(credential_exists)
+
+
+
+    def test_display_all_credentials(self):
+        '''
+        returns a list of all saved credentials
+        '''
+        self.assertEqual(Credential.display_credentials(), Credential.credential_list)
+
 
 if __name__ == '__main__':
     unittest.main()
