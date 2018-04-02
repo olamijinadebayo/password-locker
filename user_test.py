@@ -27,6 +27,15 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user() # saving the new contact
         self.assertEqual(len(User.user_list),1)
 
+    def test_user_exists(self):
+        '''
+        test to see if we can return a boolean if a user is not found
+        '''
+        self.new_user.save_user()
+        test_user = User("Olamijin","09037465697")
+        test_user.save_user()
+        user_exists = User.user_exist("Olamijin","09037465697")
+        self.assertTrue(user_exists)
     def tearDown(self):
         '''
         tearDown method that does clean up after each test case has run.

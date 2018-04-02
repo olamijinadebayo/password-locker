@@ -7,13 +7,13 @@ class TestCredential(unittest.TestCase):
         '''
         setup up method to run before each test cases.
         '''
-        self.new_credential = Credential("pinterest","Olamijin","09037465697") # create contact oblect
+        self.new_credential = Credential("pinterest","olamijin","09037465697") # create contact oblect
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
         self.assertEqual(self.new_credential.account,"pinterest")
-        self.assertEqual(self.new_credential.user_name,"Olamijin")
+        self.assertEqual(self.new_credential.user_name,"olamijin")
         self.assertEqual(self.new_credential.password,"09037465697")
     def test_save_credential(self):
         '''
@@ -51,14 +51,23 @@ class TestCredential(unittest.TestCase):
         test to see if we can return a boolean if a credential is not found
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Facebook", "gitu", "1234asdf")
+        test_credential = Credential("pinterest", "olamijin", "09037465697")
         test_credential.save_credential()
-        credential_exists = Credential.credential_exist("gitu")
+        credential_exists = Credential.credential_exist("olamijin")
         self.assertTrue(credential_exists)
     def test_display_all_credentials(self):
         '''
         returns a list of all saved credentials
         '''
         self.assertEqual(Credential.display_credentials(), Credential.credential_list)
+    def test_copy_username(self):
+        '''
+        test to confirm that a username can be copied from a found credential
+        '''
+        self.new_credential.save_credential()
+        Credential.copy_user_name("olamijin")
+
+        self.assertEqual(self.new_credential.user_name, pyperclip.paste())
+
 if __name__ == '__main__':
     unittest.main()

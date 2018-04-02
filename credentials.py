@@ -1,4 +1,4 @@
-
+import pyperclip
 class Credential(object):
     """
     docstring for Credential.
@@ -40,3 +40,7 @@ class Credential(object):
         returns the credential list
         '''
         return cls.credential_list
+    @classmethod
+    def copy_user_name(cls, name):
+        credential_found = Credential.find_by_username(name)
+        pyperclip.copy(credential_found.user_name)

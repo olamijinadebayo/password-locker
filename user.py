@@ -12,3 +12,12 @@ class User():
         function which will append every instance of the user to the user list
         """
         User.user_list.append(self)
+    @classmethod
+    def user_exist(cls, name, password):
+        '''
+        authenticate user if they have an account
+        '''
+        for user in User.user_list:
+            if user.user_name == name and user.password == password:
+                return user
+        return False
