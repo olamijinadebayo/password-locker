@@ -26,3 +26,17 @@ class Credential(object):
         for credential in cls.credential_list:
             if credential.user_name == name:
                 return credential
+
+    @classmethod
+    def credential_exist(cls, name):
+        for credential in cls.credential_list:
+            if credential.user_name == name:
+                return True
+        return False
+
+    @classmethod
+    def display_credentials(cls):
+        '''
+        returns the credential list
+        '''
+        return cls.credential_list
